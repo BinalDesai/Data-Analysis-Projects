@@ -1,9 +1,17 @@
-# 🛒 Global Retail Sales & Product Analysis 
+# 🛒 Global Retail Sales & Product Analysis (Mission X – G1)
 
 ## 🎯 Objective
 This project analyzes sales and product data from an international e-commerce retailer stored in an Azure SQL database.  
 
 The goal is to explore patterns in sales, product performance, and customer behavior to support **data-driven business decisions**, improve profitability, and identify growth opportunities across global markets.
+
+---
+
+## 📊 Data Sources
+
+- **Primary Dataset:** Retail sales data (Azure SQL Database)  
+- **Secondary Dataset:** World Bank GDP per capita data  
+  👉 https://data.worldbank.org/indicator/NY.GDP.PCAP.CD  
 
 ---
 
@@ -55,11 +63,10 @@ The goal is to explore patterns in sales, product performance, and customer beha
 #### 🔹 Key Insights
 - **United Kingdom dominates sales** (~$1.73M)  
 - Other markets: Germany, France, New Zealand, Belgium  
-- Significant drop after top 5 countries  
 
 #### 📌 Analysis
 - Heavy dependence on **UK market (80–85% revenue)**  
-- Europe = secondary market  
+- Europe acts as a secondary market  
 - Other regions underperform  
 
 👉 Opportunity:
@@ -86,18 +93,17 @@ The goal is to explore patterns in sales, product performance, and customer beha
 
 #### 🔹 Key Insights
 - Total Sales: **$1.93M**  
-- Current YTD: **$430K vs $460K last year** → **-6.51% decline**  
+- Current YTD: **$430K vs $460K last year → -6.51% decline**  
 
 #### 📌 Analysis
-- Sales show **volatility across years**  
-- Some months show strong growth, others sharp decline  
-- Indicates dependence on **campaign timing & seasonality**
+- Sales show **year-over-year volatility**  
+- Indicates dependence on **seasonality and campaign timing**  
 
 ---
 
 ### 🔮 6. Sales Forecasting
-- Forecasted **2019 sales** based on historical trends  
-- Helps in **planning inventory, staffing, and marketing strategies**
+- Forecasted **2019 sales** using historical trends  
+- Helps in planning **inventory, staffing, and marketing strategies**
 
 ---
 
@@ -107,28 +113,28 @@ The goal is to explore patterns in sales, product performance, and customer beha
 
 #### 🔹 Economic Insights
 - GDP per capita increased, but **sales declined**  
-- Indicates **GDP alone does not drive sales performance**
+- Indicates **economic growth does not directly drive sales**
 
 #### 🔹 Market Opportunities
-- Medium-GDP countries (e.g., Poland, Brazil) show **growth potential**  
-- High-GDP countries show **mixed or saturated performance**  
-- Low-GDP countries = **future expansion opportunities**
+- Medium-GDP countries show **strong growth potential**  
+- High-GDP countries show **mixed performance (possible saturation)**  
+- Low-GDP countries present **future expansion opportunities**
 
 ---
 
 ### 📌 Country-Level Insights
-- UK leads in both **sales and efficiency**
-- Countries like Norway, Iceland → strong economy but low sales  
-- Australia shows **balanced performance**
+- UK leads in both **sales and efficiency**  
+- Countries like Norway and Iceland have strong economies but low sales  
+- Australia shows balanced performance  
 
 👉 Insight:
-- Need to **diversify international strategy**
+- Need for **market diversification strategy**
 
 ---
 
 ### 📦 Product vs GDP Insights
 - High-GDP countries prefer **premium & decorative products**  
-- Medium-GDP markets respond to **affordable/practical products**
+- Medium-GDP markets respond better to **affordable/practical products**
 
 👉 Strategy:
 - Localize product offerings by region  
@@ -159,8 +165,8 @@ The goal is to explore patterns in sales, product performance, and customer beha
 - Importance of **data-driven decision making**  
 - Identifying **seasonal trends in sales**  
 - Understanding **regional market behavior**  
-- Combining **external data (GDP)** for deeper insights  
-- Translating data into **business strategies**
+- Using **external datasets (GDP)** for deeper insights  
+- Translating analysis into **business strategies**
 
 ---
 
@@ -168,8 +174,8 @@ The goal is to explore patterns in sales, product performance, and customer beha
 - Add **customer segmentation (RFM analysis)**  
 - Implement **predictive sales models**  
 - Improve **product categorization**  
-- Expand analysis to **real-time dashboards**
+- Build **interactive dashboards for real-time insights**
 
 ---
 
-⭐ This project demonstrates end-to-end business intelligence analysis using real-world retail data to drive strategic decisions.
+⭐ This project demonstrates end-to-end business intelligence analysis using real-world retail and economic data to drive strategic decisions.
