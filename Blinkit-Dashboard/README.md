@@ -45,7 +45,8 @@ It includes fields like:
 - **Customer Rating Trends**
 - **Outlet Establishment Year vs. Sales**
 
-  ![Dashboard Preview](https://github.com/BinalDesai/Blinkit-Dashboard/blob/main/blinkit_dashboard_overview.png.png)
+  ![Dashboard Preview](https://github.com/BinalDesai/Blinkit-Dashboard/blinkit_dashboard_overview.png.png)
+
 
 
 
