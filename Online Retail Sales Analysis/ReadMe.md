@@ -1,4 +1,4 @@
-# 🛒 Global Retail Sales & Product Analysis (Mission X – G1)
+# 🛒 Global Retail Sales & Product Analysis 
 
 ## 🎯 Objective
 This project analyzes sales and product data from an international e-commerce retailer stored in an Azure SQL database.  
