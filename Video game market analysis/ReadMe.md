@@ -9,7 +9,7 @@ The goal is to support data-driven decision-making by identifying key revenue dr
 
 <h2 style="color:#1F618D;">Dataset</h2>
 
-📁 Dataset Folder: [View Dataset](./dataset)
+📁 Dataset Folder: [View Dataset](./Dataset)
 
 - games_description.csv → Game details (name, genre, publisher, year)  
 - games_revenue.csv → Revenue data (purchases, pricing)  
