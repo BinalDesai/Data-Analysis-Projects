@@ -37,6 +37,7 @@ Used to enrich the analysis and compare economic indicators with sales performan
 
 ## 📈 Analysis Overview
 
+<img src="Images/Sales_by_Category.png" width="800"/>
 ### 🛍️ 1. Sales Performance by Product Categories
 
 #### 🔹 Key Insights
