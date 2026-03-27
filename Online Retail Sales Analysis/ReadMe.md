@@ -73,7 +73,7 @@ Used to enrich the analysis and compare economic indicators with sales performan
 
 ### 🌍 3. Customer & Regional Analysis
 
-<img src="Images/Top_sales_by_country.png" width="500"/>
+<img src="Images/Top_sales_by_country.png" width="800"/>
 
 #### 🔹 Key Insights
 - **United Kingdom dominates sales** (~$1.73M)  
@@ -125,6 +125,8 @@ Used to enrich the analysis and compare economic indicators with sales performan
 ## 🌐 Secondary Dataset Analysis (GDP vs Sales)
 
 ### 📊 Key Findings
+
+<img src="Images/secondary_dataset_analysis.png" width="800"/>
 
 #### 🔹 Economic Insights
 - GDP per capita increased, but **sales declined**  
