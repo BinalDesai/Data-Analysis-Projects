@@ -134,6 +134,8 @@ Used to compare economic indicators with country-level sales performance
 
 <h3 style="color:#566573;">6. Sales Forecasting</h3>
 
+<img src="Images/90_days_sales_forecast.png" width="800"/>
+
 - Forecasting performed using historical sales trends  
 - Supports planning for inventory, staffing, and marketing  
 
