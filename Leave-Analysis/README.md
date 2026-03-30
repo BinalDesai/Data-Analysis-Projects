@@ -8,23 +8,12 @@ Binal Desai
 ## Project Overview  
 This project is part of a data engineering exercise focused on analyzing employee leave data from a payroll system.
 
-The solution covers:
-- Business insight generation
-- Dimensional data modeling (star schema)
-- SQL-based transformation logic to build fact tables
+The solution includes:
+- Business insight generation  
+- Dimensional modeling (star schema)  
+- SQL transformations to build fact tables  
 
-The goal is to enable business owners to better understand employee leave behavior, approval processes, and workforce planning.
-
----
-
-## Problem Context  
-
-Organizations need visibility into:
-- How employees use leave
-- Approval efficiency and delays
-- Workforce availability and planning risks  
-
-The raw data alone is not sufficient for analysis, so a structured data model and metrics are required.
+The goal is to help business owners better understand employee leave behavior, approval processes, and workforce planning.
 
 ---
 
@@ -50,7 +39,7 @@ The raw data alone is not sufficient for analysis, so a structured data model an
 - Total Leave Days Taken = SUM(DayCount)  
 
 **Purpose**  
-Identifies employees with high leave usage across categories. Helps detect excessive leave patterns that may impact operations.
+Identifies employees with high leave usage across categories and helps detect excessive leave patterns.
 
 ---
 
@@ -59,10 +48,10 @@ Identifies employees with high leave usage across categories. Helps detect exces
 **Measures**  
 - Total Leave Hours = SUM(HoursTaken)  
 - Expected Work Hours = StandardHours × Working Days  
-- Leave Utilization Ratio = Leave Hours / Expected Hours  
+- Leave Utilization Ratio = Leave Hours / Expected Work Hours  
 
 **Purpose**  
-Evaluates how much working time is lost due to leave. Helps identify productivity risks and high-utilization employees.
+Shows how much working time is spent on leave and helps identify productivity risks.
 
 ---
 
@@ -70,10 +59,10 @@ Evaluates how much working time is lost due to leave. Helps identify productivit
 
 **Measures**  
 - Approval Ratio (%)  
-- Average Lead Time (Request → Start Date)  
+- Average Lead Time (Request Date → Start Date)  
 
 **Purpose**  
-Assesses how efficiently leave requests are processed and highlights delays in approval workflows.
+Evaluates how efficiently leave requests are processed and identifies delays.
 
 ---
 
@@ -83,7 +72,7 @@ Assesses how efficiently leave requests are processed and highlights delays in a
 - Average Days per Leave Request  
 
 **Purpose**  
-Helps understand whether employees take short or extended leave and how this varies by leave type.
+Helps understand whether employees take short or long leave periods.
 
 ---
 
@@ -94,7 +83,7 @@ Helps understand whether employees take short or extended leave and how this var
 - Total Unpaid Leave Days  
 
 **Purpose**  
-Identifies seasonal patterns and unusual spikes, supporting workforce planning.
+Identifies seasonal patterns and unusual spikes in leave usage.
 
 ---
 
@@ -106,7 +95,7 @@ Identifies seasonal patterns and unusual spikes, supporting workforce planning.
 - Planned Requests (>7 days)  
 
 **Purpose**  
-Highlights whether leave is planned or last-minute, helping improve scheduling and reduce disruptions.
+Shows whether leave is planned or last-minute, helping improve scheduling.
 
 ---
 
@@ -116,7 +105,7 @@ Highlights whether leave is planned or last-minute, helping improve scheduling a
 - Employees on Leave per Day  
 
 **Purpose**  
-Supports short-term workforce planning and ensures adequate staffing levels.
+Supports short-term workforce planning and ensures adequate staffing.
 
 ---
 
@@ -127,72 +116,60 @@ Supports short-term workforce planning and ensures adequate staffing levels.
 - Total Leave Days  
 
 **Purpose**  
-Identifies peak and low leave periods for better workload planning.
+Identifies peak and low leave periods.
 
 ---
 
 ### 9. Leave Before Termination  
 
 **Measures**  
-- Leave Days in Last 90 Days before termination  
+- Leave Days in Last 90 Days  
 
 **Purpose**  
-Detects patterns where employees take increased leave before leaving the company.
+Detects patterns of increased leave before employee exit.
 
 ---
 
 ## Part B — Dimensional Model  
 
-### Design Strategy  
+<img src="Images/star_schema.png" width="800"/>
+
+### Design Approach  
 
 Two levels of analysis are required:
+1. Request-level analysis  
+2. Day-level analysis  
 
-1. Request-level (application, approval, leave type)  
-2. Day-level (actual employee absence)
-
-To support both, two fact tables are designed.
+To support both, two fact tables are used.
 
 ---
 
 ### Fact Tables  
 
-#### FactLeaveRequest  
-Stores leave request-level data:
-- Request, start, and end dates  
-- Leave type and status  
-- Requested and approved days  
+**FactLeaveRequest**  
+- Stores request-level data  
+- Includes request dates, leave type, status, and duration  
 
-#### FactLeaveDay  
-Stores day-level leave data:
-- Individual leave dates  
-- Hours taken  
-- Daily absence tracking  
+**FactLeaveDay**  
+- Stores day-level data  
+- Tracks actual leave days and hours  
 
 ---
 
 ### Dimension Tables  
 
-- **DimEmployee**  
-  Includes employee and company information  
-  Modeled as SCD Type 2 to track historical changes  
-
-- **DimDate**  
-  Full calendar dimension for time-based analysis  
-
-- **DimLeaveType**  
-  Stores leave categories (SCD Type 1)  
-
-- **DimStatus**  
-  Stores request status values (SCD Type 1)  
+- **DimEmployee** (SCD Type 2)  
+- **DimDate** (calendar dimension)  
+- **DimLeaveType** (SCD Type 1)  
+- **DimStatus** (SCD Type 1)  
 
 ---
 
 ### Design Decisions  
 
-- Two fact tables ensure correct granularity  
+- Two fact tables maintain correct granularity  
 - Employee dimension is denormalized for performance  
 - Star schema simplifies reporting and reduces joins  
-- Model is optimized for BI tools such as Power BI  
 
 ---
 
