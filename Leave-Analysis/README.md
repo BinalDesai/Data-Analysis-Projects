@@ -35,7 +35,7 @@ The goal is to help business owners better understand employee leave behavior, a
 
 ### Before: Source Schema (Normalized)
 
-<img src="Images/before_database_design.png" width="800"/>
+<img src="Images/Dimensional_model.png" width="800"/>
 
 ### After: Dimensional Model (Star Schema)
 
