@@ -24,7 +24,7 @@ This repository contains my data analysis and business intelligence projects, sh
 - Integrated **World Bank GDP data** to assess economic impact on sales  
 - Provided insights for **market expansion, pricing strategy, and inventory planning**  
 
-🔗 [View Project](./Online Retail Sales Analysis)
+🔗 [View Project](./Online%20Retail%20Sales%20Analysis)
 
 ---
 
