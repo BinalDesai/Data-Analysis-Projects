@@ -1,8 +1,5 @@
 <h1 style="color:#2E86C1;">Leave Analysis Data Engineering Exercise</h1>
 
-## Candidate  
-Binal Desai  
-
 ---
 
 ## Project Overview  
