@@ -16,12 +16,15 @@ This repository contains my data analysis and business intelligence projects, sh
 
 ---
 
-### 📊 Leave Analysis
-- Analyzed employee leave data to identify **patterns and trends**  
-- Cleaned and structured data for reporting  
-- Generated insights to support **workforce planning and decision-making**  
 
-🔗 [View Project](./Leave-Analysis)
+### 🌍 Global Retail Sales & Product Analysis
+- Analyzed international e-commerce sales data using **SQL and Power BI**  
+- Evaluated **sales performance, product categories, and regional trends**  
+- Identified **seasonality patterns and year-over-year performance changes**  
+- Integrated **World Bank GDP data** to assess economic impact on sales  
+- Provided insights for **market expansion, pricing strategy, and inventory planning**  
+
+🔗 [View Project](./Online-Retail-Sales-Analysis)
 
 ---
 
