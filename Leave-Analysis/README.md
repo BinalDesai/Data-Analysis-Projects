@@ -31,6 +31,20 @@ The goal is to help business owners better understand employee leave behavior, a
 
 ---
 
+## Database Design (Before vs After)
+
+### Before: Source Schema (Normalized)
+
+<img src="Images/before_database_design.png" width="800"/>
+
+### After: Dimensional Model (Star Schema)
+
+<img src="Images/star_schema.png" width="800"/>
+
+The original normalized schema is transformed into a star schema to support efficient analytical queries and reporting.
+
+---
+
 ## Part A — Business Insights  
 
 ### 1. Top Employees by Leave Type  
@@ -131,8 +145,6 @@ Detects patterns of increased leave before employee exit.
 ---
 
 ## Part B — Dimensional Model  
-
-<img src="Images/star_schema.png" width="800"/>
 
 ### Design Approach  
 
