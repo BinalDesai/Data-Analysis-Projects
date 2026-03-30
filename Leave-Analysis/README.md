@@ -39,7 +39,8 @@ The goal is to help business owners better understand employee leave behavior, a
 
 ### After: Dimensional Model (Star Schema)
 
-<img src="Images/star_schema.png" width="800"/>
+<img src="Images/Screenshot 2026-03-30 201735.png" width="800"/>
+
 
 The original normalized schema is transformed into a star schema to support efficient analytical queries and reporting.
 
