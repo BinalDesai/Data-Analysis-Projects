@@ -1,185 +1,239 @@
 <h1 style="color:#2E86C1;">Leave Analysis Data Engineering Exercise</h1>
 
----
-
-## Overview
-
-This project is based on a Data Engineering Test Exercise focused on analyzing employee leave data from a payroll system.
-
-The objective is to:
-
-* Build a dimensional data model (star schema)
-* Create fact tables using SQL
-* Generate business insights for decision-making
+## Candidate  
+Binal Desai  
 
 ---
 
-## Dataset Description
+## Project Overview  
+This project is part of a data engineering exercise focused on analyzing employee leave data from a payroll system.
 
-The dataset consists of:
+The solution covers:
+- Business insight generation
+- Dimensional data modeling (star schema)
+- SQL-based transformation logic to build fact tables
 
-* LeaveRequest → Application-level data
-* LeaveDay → Day-level leave records
-
-### Leave Types
-
-* AL – Annual Leave
-* SL – Sick Leave
-* UPL – Unpaid Leave
-* OTHER
+The goal is to enable business owners to better understand employee leave behavior, approval processes, and workforce planning.
 
 ---
 
-## Part A — Business Insights
+## Problem Context  
 
-### 1. Top Employees by Leave Type
+Organizations need visibility into:
+- How employees use leave
+- Approval efficiency and delays
+- Workforce availability and planning risks  
 
-* Measure: SUM(DayCount)
-* Identifies employees taking the most leave by category
-
-### 2. Leave Utilization
-
-* Measures:
-
-  * Total Leave Hours
-  * Expected Work Hours
-  * Leave Utilization Ratio
-* Shows how much working time is spent on leave
-
-### 3. Leave Approval Efficiency
-
-* Approval Ratio (%)
-* Average Lead Time
-* Status Breakdown
-* Evaluates approval process performance
-
-### 4. Average Leave Duration
-
-* Measure: AVG(Days per Request)
-* Helps understand leave patterns (short vs long)
-
-### 5. Sick & Unpaid Leave Trends
-
-* Tracks monthly absenteeism patterns
-
-### 6. Leave Application Lead Time
-
-* Last-minute vs planned requests
-
-### 7. Upcoming Leave Coverage
-
-* Employees on leave in next 30 days
-
-### 8. Monthly Leave Seasonality
-
-* Identifies peak leave periods
-
-### 9. Leave Before Termination
-
-* Detects spikes in leave before exit
+The raw data alone is not sufficient for analysis, so a structured data model and metrics are required.
 
 ---
 
-## Part B — Dimensional Model
+## Dataset Overview  
 
-## Data Model (From PDF - Diagram 1)
+### Source Tables  
+- LeaveRequest (request-level data)  
+- LeaveDay (day-level leave records)  
 
-![Data Model](assets/data_model.png)
-
----
-
-## Star Schema Design
-
-### Fact Tables
-
-* FactLeaveRequest → request-level analysis
-* FactLeaveDay → day-level analysis
-
-### Dimension Tables
-
-* DimEmployee (SCD Type 2)
-* DimDate
-* DimLeaveType (SCD Type 1)
-* DimStatus (SCD Type 1)
-
-### Design Rationale
-
-* Two fact tables maintain correct granularity
-* Employee dimension is denormalized for performance
-* Star schema simplifies reporting
-* SCD Type 2 supports historical tracking
+### Leave Types  
+- AL – Annual Leave  
+- SL – Sick Leave  
+- UPL – Unpaid Leave  
+- OTHER  
 
 ---
 
-## Database Design (From PDF - Diagram 2)
+## Part A — Business Insights  
 
-![Database Design](assets/database_design.png)
+### 1. Top Employees by Leave Type  
+
+**Measures**  
+- Total Leave Days Taken = SUM(DayCount)  
+
+**Purpose**  
+Identifies employees with high leave usage across categories. Helps detect excessive leave patterns that may impact operations.
 
 ---
 
-## Part C — Fact Table Implementation
+### 2. Leave Utilization (Employee & Company Level)  
 
-### Example: FactLeaveRequest
+**Measures**  
+- Total Leave Hours = SUM(HoursTaken)  
+- Expected Work Hours = StandardHours × Working Days  
+- Leave Utilization Ratio = Leave Hours / Expected Hours  
+
+**Purpose**  
+Evaluates how much working time is lost due to leave. Helps identify productivity risks and high-utilization employees.
+
+---
+
+### 3. Leave Approval Efficiency  
+
+**Measures**  
+- Approval Ratio (%)  
+- Average Lead Time (Request → Start Date)  
+
+**Purpose**  
+Assesses how efficiently leave requests are processed and highlights delays in approval workflows.
+
+---
+
+### 4. Average Leave Duration  
+
+**Measures**  
+- Average Days per Leave Request  
+
+**Purpose**  
+Helps understand whether employees take short or extended leave and how this varies by leave type.
+
+---
+
+### 5. Monthly Sick and Unpaid Leave Trends  
+
+**Measures**  
+- Total Sick Leave Days  
+- Total Unpaid Leave Days  
+
+**Purpose**  
+Identifies seasonal patterns and unusual spikes, supporting workforce planning.
+
+---
+
+### 6. Leave Application Lead Time  
+
+**Measures**  
+- Average Lead Time  
+- Last-Minute Requests (≤1 day)  
+- Planned Requests (>7 days)  
+
+**Purpose**  
+Highlights whether leave is planned or last-minute, helping improve scheduling and reduce disruptions.
+
+---
+
+### 7. Upcoming Leave Coverage (Next 30 Days)  
+
+**Measures**  
+- Employees on Leave per Day  
+
+**Purpose**  
+Supports short-term workforce planning and ensures adequate staffing levels.
+
+---
+
+### 8. Monthly Leave Seasonality  
+
+**Measures**  
+- Total Leave Requests  
+- Total Leave Days  
+
+**Purpose**  
+Identifies peak and low leave periods for better workload planning.
+
+---
+
+### 9. Leave Before Termination  
+
+**Measures**  
+- Leave Days in Last 90 Days before termination  
+
+**Purpose**  
+Detects patterns where employees take increased leave before leaving the company.
+
+---
+
+## Part B — Dimensional Model  
+
+### Design Strategy  
+
+Two levels of analysis are required:
+
+1. Request-level (application, approval, leave type)  
+2. Day-level (actual employee absence)
+
+To support both, two fact tables are designed.
+
+---
+
+### Fact Tables  
+
+#### FactLeaveRequest  
+Stores leave request-level data:
+- Request, start, and end dates  
+- Leave type and status  
+- Requested and approved days  
+
+#### FactLeaveDay  
+Stores day-level leave data:
+- Individual leave dates  
+- Hours taken  
+- Daily absence tracking  
+
+---
+
+### Dimension Tables  
+
+- **DimEmployee**  
+  Includes employee and company information  
+  Modeled as SCD Type 2 to track historical changes  
+
+- **DimDate**  
+  Full calendar dimension for time-based analysis  
+
+- **DimLeaveType**  
+  Stores leave categories (SCD Type 1)  
+
+- **DimStatus**  
+  Stores request status values (SCD Type 1)  
+
+---
+
+### Design Decisions  
+
+- Two fact tables ensure correct granularity  
+- Employee dimension is denormalized for performance  
+- Star schema simplifies reporting and reduces joins  
+- Model is optimized for BI tools such as Power BI  
+
+---
+
+## Part C — SQL Implementation  
+
+### FactLeaveRequest  
 
 ```sql
-INSERT INTO FactLeaveRequest (...)
-SELECT ...
-FROM LeaveRequest ...
-JOIN DimEmployee ...
-```
-
-Full implementation available in:
-
-* setup.sql
-
----
-
-### Example: FactLeaveDay
-
-```sql
-INSERT INTO FactLeaveDay (...)
-SELECT ...
-FROM LeaveDay ...
-JOIN FactLeaveRequest ...
-```
-
-Full implementation available in:
-
-* setup.sql
-
----
-
-## How to Run
-
-1. Run schema and data load:
-
-```
-setup.sql
-```
-
-2. Run analysis queries:
-
-```
-analysis.sql
-```
-
----
-
-## Tech Stack
-
-* MySQL (MySQL Workbench 8.0)
-* Dimensional Modeling (Star Schema)
-
----
-
-## Notes
-
-* SQL scripts were written and tested in MySQL
-* Minor syntax changes may be required for SQL Server
-* In BI tools such as Power BI, similar logic can be implemented using DAX
-
----
-
-## Author
-
-Binal Desai
+INSERT INTO FactLeaveRequest (
+    EmployeeKey,
+    LeaveTypeKey,
+    StatusKey,
+    RequestDateKey,
+    StartDateKey,
+    EndDateKey,
+    ApproverKey,
+    RequestedDays,
+    ApprovedDays,
+    RequestCount,
+    SourceLeaveRequestID
+)
+SELECT 
+    de.EmployeeKey,
+    dlt.LeaveTypeKey,
+    ds.StatusKey,
+    ddReq.DateKey,
+    ddStart.DateKey,
+    ddEnd.DateKey,
+    NULL,
+    DATEDIFF(lr.EndDate, lr.StartDate) + 1,
+    CASE 
+        WHEN lr.StatusCode = 'APPROVED' 
+        THEN (DATEDIFF(lr.EndDate, lr.StartDate) + 1)
+        ELSE 0 
+    END,
+    1,
+    lr.LeaveRequestID
+FROM LeaveRequest lr
+JOIN DimEmployee de ON lr.EmployeeID = de.EmployeeID
+JOIN DimLeaveType dlt ON lr.LeaveTypeCode = dlt.LeaveTypeCode
+JOIN DimStatus ds ON lr.StatusCode = ds.StatusCode
+JOIN DimDate ddReq ON ddReq.FullDate = lr.RequestDate
+JOIN DimDate ddStart ON ddStart.FullDate = lr.StartDate
+JOIN DimDate ddEnd ON ddEnd.FullDate = lr.EndDate;
